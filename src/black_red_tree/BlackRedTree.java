@@ -41,21 +41,28 @@ public class BlackRedTree<V extends Comparable<V>> {
         if (node == null) {
             return;
         }
-        if (node.parent.right == node && node.color == Color.RED) {
-            rotateLeft(node.parent);
-            if (node.parent != null) {
-                if (node.parent.left != null) {
-                    balancing(node.parent.left);
-                }
-                if (node.parent.right != null) {
-                    balancing(node.parent.right);
-                }
-            }
-        } else {
-            if (node.parent.left == node && (node.color == Color.RED && node.parent.color == Color.RED)) {
-                rotateRight(node.parent.parent);
+        if (node.parent != null) {
+            if (node.parent.left != null && node.parent.right != null &&
+                    node.parent.right.color == Color.RED && node.parent.left.color == Color.RED) {
                 colorSwap(node.parent);
-                balancing(node.parent.right.left);
+            }
+
+            if (node.parent.right == node && node.color == Color.RED) {
+                rotateLeft(node.parent);
+                if (node.parent != null) {
+                    if (node.parent.left != null) {
+                        balancing(node.parent.left);
+                    }
+                    if (node.parent.right != null) {
+                        balancing(node.parent.right);
+                    }
+                }
+            } else {
+                if (node.parent.left == node && (node.color == Color.RED && node.parent.color == Color.RED)) {
+                    rotateRight(node.parent.parent);
+                    colorSwap(node.parent);
+                    balancing(node.parent.right.left);
+                }
             }
         }
     }
@@ -108,6 +115,7 @@ public class BlackRedTree<V extends Comparable<V>> {
         if (node == root) {
             node.color = Color.BLACK;
         }
+        balancing(node);
     }
 
     public void print(Node<V> head) {

@@ -2,26 +2,26 @@ package black_red_tree;
 
 public class TestTree {
     public static void main(String[] args) {
-        BlackRedTree<Integer> tree = new BlackRedTree();
-        tree.add(15);
+        BlackRedTree<String> tree = new BlackRedTree();
+        tree.add("a");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(25);
+        tree.add("b");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(7);
+        tree.add("c");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(100);
+        tree.add("d");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(10);
+        tree.add("f");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(3);
+        tree.add("e");
         System.out.println("-------------------------");
         tree.print(tree.root);
-        tree.add(12);
+        tree.add("x");
         System.out.println("-------------------------");
         tree.print(tree.root);
         System.out.println("-------------------------");
